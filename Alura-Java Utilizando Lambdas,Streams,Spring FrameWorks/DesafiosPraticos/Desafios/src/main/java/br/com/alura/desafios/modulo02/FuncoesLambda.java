@@ -21,7 +21,7 @@ public class FuncoesLambda {
         CalcularOperacao("Multiplicação", (a, b) -> a * b);
     }
 
-   
+
 
         }
     }
