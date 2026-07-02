@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ContaBancaria/ContaBancaria.iml" filepath="$PROJECT_DIR$/ContaBancaria/ContaBancaria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java_Criando a Primeira Aplicação.iml" filepath="$PROJECT_DIR$/.idea/Java_Criando a Primeira Aplicação.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Modulo01 - Curso Alura/Modulo01 - Curso Alura.iml" filepath="$PROJECT_DIR$/Modulo01 - Curso Alura/Modulo01 - Curso Alura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Modulo02 - Curso Alura/Modulo02 - Curso Alura.iml" filepath="$PROJECT_DIR$/Modulo02 - Curso Alura/Modulo02 - Curso Alura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Modulo03 - Curso Alura/Modulo03 - Curso Alura.iml" filepath="$PROJECT_DIR$/Modulo03 - Curso Alura/Modulo03 - Curso Alura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Projeto_ScreenMatch/Projeto_ScreenMatch.iml" filepath="$PROJECT_DIR$/Projeto_ScreenMatch/Projeto_ScreenMatch.iml" />
+    </modules>
+  </component>
+</project>
