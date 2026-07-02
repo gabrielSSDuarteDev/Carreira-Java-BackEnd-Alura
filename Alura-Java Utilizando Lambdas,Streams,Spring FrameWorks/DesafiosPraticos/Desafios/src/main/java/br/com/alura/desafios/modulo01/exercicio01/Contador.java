@@ -1,4 +1,4 @@
-package br.com.alura.desafios.modulo01;
+package br.com.alura.desafios.modulo01.exercicio01;
 
 import java.util.Scanner;
 import java.util.stream.IntStream;

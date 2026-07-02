@@ -1,10 +1,9 @@
-package br.com.alura.desafios.modulo01;
+package br.com.alura.desafios.modulo01.exercicio02;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.*;
-import java.lang.reflect.Type;
+
 
 public class Tarefa {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -32,19 +31,15 @@ public class Tarefa {
 
     }
 
-    public void Deserializar(Tarefa tarefa) throws FileNotFoundException {
+    public void Deserializar(Tarefa tarefa)  {
         try( FileReader escritor = new FileReader("tarefa.json")){
-           Tarefa arquivo = gson.fromJson(escritor,tarefa.getClass());
+            Tarefa arquivo = gson.fromJson(escritor,tarefa.getClass());
             System.out.println("Tarefa Deserializada com sucesso!" + arquivo);
         }
         catch(IOException e){
             System.out.println("Erro ao deserializar tarefa!" + e.getMessage());
         }
     }
-
-
-
-
 
 
     public String getDescricao() {
