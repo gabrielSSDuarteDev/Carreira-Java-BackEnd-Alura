@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Alura SpringBoot.iml" filepath="$PROJECT_DIR$/.idea/Alura SpringBoot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DesafiosPraticos/DesafiosPraticos.iml" filepath="$PROJECT_DIR$/DesafiosPraticos/DesafiosPraticos.iml" />
     </modules>
   </component>
 </project>
