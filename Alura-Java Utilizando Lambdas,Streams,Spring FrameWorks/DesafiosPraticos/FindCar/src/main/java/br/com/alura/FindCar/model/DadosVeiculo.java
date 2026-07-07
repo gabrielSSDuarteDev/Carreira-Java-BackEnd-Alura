@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DadosVeiculo {
-    private Integer TipoVeiculo;
-    private String Valor;
-    private String Marca;
-    private String Modelo;
+public record DadosVeiculo(
+        @JsonAlias("TipoVeiculo") Integer tipoVeiculo,
+        @JsonAlias("Valor")String preco,
+        @JsonAlias("Modelo")String modelo
+) {
+
 }
