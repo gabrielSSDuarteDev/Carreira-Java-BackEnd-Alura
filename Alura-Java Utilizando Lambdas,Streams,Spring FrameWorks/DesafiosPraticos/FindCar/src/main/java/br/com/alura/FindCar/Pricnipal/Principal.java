@@ -1,9 +1,12 @@
 package br.com.alura.FindCar.Pricnipal;
 
+import br.com.alura.FindCar.model.Dados;
+import br.com.alura.FindCar.model.modelos;
 import br.com.alura.FindCar.service.ConsumoAPI;
 import br.com.alura.FindCar.service.ConverterDadosApi;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Principal {
@@ -39,31 +42,25 @@ public class Principal {
 
         var json = consumo.obterDadosCarro(endereco);
         System.out.println(json);
+        var marcas = converter.obterLista(json, Dados.class);
 
-        System.out.println("Agora digite a marca desejada de acordo com o codigo ao lado: ");
-        var codigo = sc.nextLine();
 
-        endereco = endereco +"/"+codigo+"/modelos/";
+        marcas.stream()
+                .sorted(Comparator.comparing(Dados::codigo))
+                .forEach(System.out::println);
+
+        System.out.println("Digite o código da marca desejada para consulta: ");
+        var codigoMarca = sc.nextLine();
+
+        endereco += "/"+codigoMarca+"/modelos";
         json = consumo.obterDadosCarro(endereco);
-        System.out.println(json);
+        var modelos = converter.obterDados(json, modelos.class);
 
+        System.out.println("Modelos dessa Marca: ");
+        modelos.modelos().stream()
+                .sorted(Comparator.comparing(Dados::codigo))
+                .forEach(System.out::println);
 
-        System.out.println("Agora digite modelo desejada de acordo com o codigo ao lado: ");
-        var NUM = sc.nextLine();
-
-        endereco = endereco +NUM+"/anos";
-        json = consumo.obterDadosCarro(endereco);
-        System.out.println(json);
-
-
-
-        System.out.println("Por fim  digite o ano desejado de acrodo com o ano e o codigo informado ao lado ");
-        var ano= sc.nextLine();
-        var id = sc.nextLine();
-
-    endereco = endereco +"/"+ano+"-"+id;
-        json = consumo.obterDadosCarro(endereco);
-        System.out.println(json);
     }
 
 }
