@@ -20,7 +20,7 @@ public class FindCarApplication implements CommandLineRunner {
 
 		Principal principal = new Principal();
 		principal.exibirMenu();
-
+		System.out.println("Git esta funcionando");
 
 	}
 }
