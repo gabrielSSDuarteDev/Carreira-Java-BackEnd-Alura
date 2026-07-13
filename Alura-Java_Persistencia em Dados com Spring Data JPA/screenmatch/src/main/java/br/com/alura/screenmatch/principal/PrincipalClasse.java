@@ -1,9 +1,6 @@
 package br.com.alura.screenmatch.principal;
 
-import br.com.alura.screenmatch.model.DadosEpisode;
-import br.com.alura.screenmatch.model.DadosSerie;
-import br.com.alura.screenmatch.model.DadosTemporada;
-import br.com.alura.screenmatch.model.Episodio;
+import br.com.alura.screenmatch.model.*;
 import br.com.alura.screenmatch.service.ConsumoAPI;
 import br.com.alura.screenmatch.service.ConverteDados;
 
@@ -23,9 +20,14 @@ public class PrincipalClasse {
     private ConverteDados converteDados = new ConverteDados();
     private final String ENDERECO = "https://www.omdbapi.com/?t=";
     private final String APIKEY = "&apikey=e9080fa4";
+    private List<DadosSerie> series =  new ArrayList<>();
 
 
     public void selecionarMenu() throws IOException, InterruptedException {
+
+
+        var opcao = -1;
+        while(opcao!= 0){
         var menu = """
                 =====================================
                              ScreenMatch
@@ -33,12 +35,13 @@ public class PrincipalClasse {
                 Digite o numero da opção desejada:
                 1-Buscar Série
                 2-Buscar Episódios
+                3-Listar Séries Buscadas
                 0-Sair
                 =====================================
                 """;
 
         System.out.println(menu);
-        var opcao = sc.nextInt();
+        opcao = sc.nextInt();
         sc.nextLine();
 
 
@@ -49,6 +52,10 @@ public class PrincipalClasse {
             case 2:
                 buscarEpisodioWeb();
                 break;
+            case 3:
+                listarSeriesBuscadas();
+                break;
+
             case 0:
                 System.out.println("Saindo do ScreenMatch....");
                 break;
@@ -57,6 +64,9 @@ public class PrincipalClasse {
                 break;
         }
     }
+        }
+
+
 
     private DadosSerie getDadosSerie() throws IOException, InterruptedException {
         System.out.println("Digite o nome da série para busca: ");
@@ -69,9 +79,9 @@ public class PrincipalClasse {
     }
     private void buscarSerieWeb() throws IOException, InterruptedException {
         DadosSerie dados = getDadosSerie();
+        series.add(dados);
         System.out.println(dados);
     }
-
 
     public void buscarEpisodioWeb() throws IOException, InterruptedException {
         DadosSerie dadosSerie = getDadosSerie();
@@ -84,5 +94,10 @@ public class PrincipalClasse {
         }
         temporadas.forEach(System.out::println);
     }
+
+    private void listarSeriesBuscadas() {
+      series.forEach(System.out::println);
+    }
+
 
 }
