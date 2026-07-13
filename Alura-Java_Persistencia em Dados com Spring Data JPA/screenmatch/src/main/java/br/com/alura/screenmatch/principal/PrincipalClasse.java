@@ -39,6 +39,7 @@ public class PrincipalClasse {
 
         System.out.println(menu);
         var opcao = sc.nextInt();
+        sc.nextLine();
 
 
         switch(opcao){
@@ -57,26 +58,22 @@ public class PrincipalClasse {
         }
     }
 
-    private void buscarSerieWeb() throws IOException, InterruptedException {
-        DadosSerie dados = getDadosSerie();
-        System.out.println(dados);
-    }
-
     private DadosSerie getDadosSerie() throws IOException, InterruptedException {
         System.out.println("Digite o nome da série para busca: ");
         var nomeSerie = sc.nextLine();
         var enderecoCompleto = ENDERECO + nomeSerie.replace(" ", "+") + APIKEY;
         var json = consumoAPI.obterDadosSeries(enderecoCompleto);
         DadosSerie dados = converteDados.obterDados(json, DadosSerie.class);
-        System.out.println(dados);
         return dados;
 
     }
-
+    private void buscarSerieWeb() throws IOException, InterruptedException {
+        DadosSerie dados = getDadosSerie();
+        System.out.println(dados);
+    }
 
 
     public void buscarEpisodioWeb() throws IOException, InterruptedException {
-
         DadosSerie dadosSerie = getDadosSerie();
         List<DadosTemporada> temporadas = new ArrayList<>();
 

@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch;
 
+import br.com.alura.screenmatch.model.DadosSerie;
 import br.com.alura.screenmatch.principal.PrincipalClasse;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
