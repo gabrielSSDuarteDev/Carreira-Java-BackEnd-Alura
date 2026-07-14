@@ -3,6 +3,7 @@ package br.com.alura.screenmatch.principal;
 import br.com.alura.screenmatch.model.*;
 import br.com.alura.screenmatch.service.ConsumoAPI;
 import br.com.alura.screenmatch.service.ConverteDados;
+import io.micrometer.common.KeyValues;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -12,9 +13,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class PrincipalClasse {
-
-
-
     private Scanner sc = new Scanner(System.in);
     private ConsumoAPI consumoAPI = new ConsumoAPI();
     private ConverteDados converteDados = new ConverteDados();
@@ -65,26 +63,27 @@ public class PrincipalClasse {
         }
     }
         }
+    private DadosSerie getDadosSerie(String nomeSerie) throws IOException, InterruptedException {
 
-
-
-    private DadosSerie getDadosSerie() throws IOException, InterruptedException {
-        System.out.println("Digite o nome da série para busca: ");
-        var nomeSerie = sc.nextLine();
-        var enderecoCompleto = ENDERECO + nomeSerie.replace(" ", "+") + APIKEY;
+        var enderecoCompleto = ENDERECO +nomeSerie.replace(" ", "+") + APIKEY;
         var json = consumoAPI.obterDadosSeries(enderecoCompleto);
         DadosSerie dados = converteDados.obterDados(json, DadosSerie.class);
         return dados;
 
     }
     private void buscarSerieWeb() throws IOException, InterruptedException {
-        DadosSerie dados = getDadosSerie();
+        System.out.println("Digite o nome da série para busca: ");
+        var nomeSerie = sc.nextLine();
+        DadosSerie dados = getDadosSerie(nomeSerie);
         series.add(dados);
         System.out.println(dados);
     }
 
     public void buscarEpisodioWeb() throws IOException, InterruptedException {
-        DadosSerie dadosSerie = getDadosSerie();
+        System.out.println("Digite o nome da série para buscar os episódios: ");
+        var nomeSerie = sc.nextLine();
+
+        DadosSerie dadosSerie = getDadosSerie(nomeSerie);
         List<DadosTemporada> temporadas = new ArrayList<>();
 
         for (int i = 1; i <= dadosSerie.totalTemporada(); i++) {
@@ -95,8 +94,17 @@ public class PrincipalClasse {
         temporadas.forEach(System.out::println);
     }
 
-    private void listarSeriesBuscadas() {
-      series.forEach(System.out::println);
+    private void listarSeriesBuscadas() throws IOException, InterruptedException {
+       List<Serie> infoSeries = new ArrayList<>();
+       infoSeries = series.stream()
+               .map(Serie::new)
+               .toList();
+
+       infoSeries.stream()
+               .sorted(Comparator.comparing(Serie::getGenero))
+               .forEach(System.out::println);
+
+
     }
 
 

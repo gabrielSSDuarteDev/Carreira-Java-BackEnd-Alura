@@ -1,8 +1,0 @@
-public enum Planetas {T
-
-
-
-
-
-
-}

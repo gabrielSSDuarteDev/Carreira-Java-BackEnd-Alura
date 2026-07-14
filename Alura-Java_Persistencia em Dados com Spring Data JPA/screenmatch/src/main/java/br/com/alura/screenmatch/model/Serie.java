@@ -27,6 +27,80 @@ public class Serie {
 
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
+    public String getSinopse() {
+        return sinopse;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
+    }
+
+    public Double getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(Double avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
+    public Integer getTotalTemporada() {
+        return totalTemporada;
+    }
+
+    public void setTotalTemporada(Integer totalTemporada) {
+        this.totalTemporada = totalTemporada;
+    }
+
+    public String getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(String duracao) {
+        this.duracao = duracao;
+    }
+
+    public Categoria getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Categoria genero) {
+        this.genero = genero;
+    }
+
+    public String getAtores() {
+        return atores;
+    }
+
+    public void setAtores(String atores) {
+        this.atores = atores;
+    }
+
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    @Override
+    public String toString() {
+        return "Serie: " +
+                "genero=" + genero +'\'' +
+                "titulo='" + titulo + '\'' +
+                "sinopse='" + sinopse + '\'' +
+                "avaliacao=" + avaliacao +
+                "totalTemporada=" + totalTemporada +
+                "duracao='" + duracao + '\'' +
+                "atores='" + atores + '\'' +
+                "poster='" + poster + '\'';
+    }
 }
